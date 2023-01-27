@@ -30,7 +30,6 @@ const runCorsMiddleware = (req, res) => {
 export default async function handler(req, res) {
   const { url } = req.body;
   console.log("🚀 ~ file: boop.js:32 ~ handler ~ url", url)
-  console.log("🚀 ~ file: boop.js:32 ~ handler ~ req.body", req.body)
 
   try {
     if (process.env.NODE_ENV === 'production') {
