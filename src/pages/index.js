@@ -14,19 +14,6 @@ const headingAccentStyles = {
   color: "#663399",
 }
 
-fetch('http://localhost:8000/api/boop', {
-  method: 'POST',
-  body: JSON.stringify({
-    url: 'https://grad.morgan.edu',
-  }),
-})
-  .then(response => response.text())
-  .then(data => {
-    console.log("🚀 ~ file: index.js:25 ~ data", data)
-    // insert the HTML into a div on the page at siteB
-   
-  });
-
 const IndexPage = () => {
   return (
     <main style={pageStyles}>
