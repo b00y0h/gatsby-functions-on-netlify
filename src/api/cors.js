@@ -30,10 +30,10 @@ const runCorsMiddleware = (req, res) => {
 };
 
 export default async function corsHandler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // allow CORS from any origin
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // allow certain methods
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  // console.log("🚀 ~ file: boop.js:49 ~ corsHandler ~ req", req)
+  // res.setHeader('Access-Control-Allow-Origin', '*'); // allow CORS from any origin
+  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // allow certain methods
+  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   const { url } = req.query;
 
   try {
@@ -56,6 +56,6 @@ export default async function corsHandler(req, res) {
       res.status(500).json({ message: '🚫 Retrieving HTML error' });
     }
   } catch (error) {
-    res.status(403).json({ message: '🚫 Request blocked by CORS' });
+    res.status(403).json({ message: '🚫 Request blocked by CORS', error });
   }
 }
