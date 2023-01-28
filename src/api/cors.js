@@ -1,7 +1,10 @@
 import Cors from 'cors';
-import rp  from 'request-promise';
+import rp from 'request-promise';
 
-const allowedOrigins = ['http://127.0.0.1', 'http://localhost:*'];
+const allowedOrigins = [
+  'http://127.0.0.1:*',
+  'http://localhost:*',
+];
 
 const cors = Cors({
   origin: (origin, callback) => {
@@ -41,12 +44,12 @@ export default async function corsHandler(req, res) {
       }
 
       const html = await rp(url);
-      console.log("🚀 ~ file: boop.js:64 ~ corsHandler ~ html", html)
-
+      console.log('🚀 ~ file: boop.js:64 ~ corsHandler ~ html', html);
 
       res
         .status(200)
-        .json({ message: '🕺 Retreiving page HTML ok', html: html }).send(html)
+        .json({ message: '🕺 Retreiving page HTML ok', html: html })
+        .send(html);
     } catch (error) {
       res.status(500).json({ message: '🚫 Retrieving HTML error' });
     }
