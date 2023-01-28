@@ -2,7 +2,7 @@ import Cors from 'cors';
 import rp  from 'request-promise';
 
 const allowedOrigins = [
-  'https://url1.com',
+  'http://127.0.0.1',
   'https://url2.com',
 ];
 
