@@ -1,10 +1,7 @@
 import Cors from 'cors';
 import rp  from 'request-promise';
 
-const allowedOrigins = [
-  'http://127.0.0.1',
-  'https://url2.com',
-];
+const allowedOrigins = ['http://127.0.0.1', 'http://localhost:*'];
 
 const cors = Cors({
   origin: (origin, callback) => {
