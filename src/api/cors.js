@@ -2,8 +2,10 @@ import Cors from 'cors';
 import rp from 'request-promise';
 
 const allowedOrigins = [
+  'http://127.0.0.1:5173',
   'http://127.0.0.1:*',
   'http://localhost:*',
+  'https://alr.netlify.app',
 ];
 
 const cors = Cors({
