@@ -1,9 +1,9 @@
 import Cors from 'cors';
+import rp  from 'request-promise';
 
 const allowedOrigins = [
-  'https://paulieapi.gatsbyjs.io',
-  'https://www.mdx-embed.com',
-  'https://paulie.dev',
+  'https://url1.com',
+  'https://url2.com',
 ];
 
 const cors = Cors({
@@ -27,9 +27,12 @@ const runCorsMiddleware = (req, res) => {
   });
 };
 
-export default async function handler(req, res) {
-  const { url } = req.body;
-  console.log("🚀 ~ file: boop.js:32 ~ handler ~ url", url)
+export default async function corsHandler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // allow CORS from any origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // allow certain methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // console.log("🚀 ~ file: boop.js:49 ~ corsHandler ~ req", req)
+  const { url } = req.query;
 
   try {
     if (process.env.NODE_ENV === 'production') {
@@ -40,9 +43,13 @@ export default async function handler(req, res) {
         res.status(400).json({ message: '⚠️ Missing required body params' });
       }
 
+      const html = await rp(url);
+      console.log("🚀 ~ file: boop.js:64 ~ corsHandler ~ html", html)
+
+
       res
         .status(200)
-        .json({ message: '🕺 Retreiving page HTML ok', url: session.url });
+        .json({ message: '🕺 Retreiving page HTML ok', html: html }).send(html)
     } catch (error) {
       res.status(500).json({ message: '🚫 Retrieving HTML error' });
     }
