@@ -30,16 +30,16 @@ const runCorsMiddleware = (req, res) => {
 };
 
 export default async function corsHandler(req, res) {
-  // res.setHeader('Access-Control-Allow-Origin', '*'); // allow CORS from any origin
-  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // allow certain methods
-  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Origin', '*'); // allow CORS from any origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // allow certain methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   const { url } = req.query;
 
   try {
-    if (process.env.NODE_ENV === 'production') {
-      await runCorsMiddleware(req, res);
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   await runCorsMiddleware(req, res);
+    // }
     try {
       if (!url) {
         res.status(400).json({ message: '⚠️ Missing required body params' });
